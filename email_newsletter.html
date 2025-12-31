@@ -33,7 +33,12 @@
             .container {width: 100% !important; max-width: 100% !important;}
             .mobile-hide {display: none !important;}
             /* Force columns to stack on mobile */
-            .col-split {display: block !important; width: 100% !important; padding-right: 0 !important; padding-left: 0 !important; margin-bottom: 20px;}
+            .col-split {display: block !important; width: 100% !important; padding-right: 0 !important; padding-left: 0 !important; margin-bottom: 20px; text-align: center !important;}
+            .col-split > div[style*="margin-right"],
+            .col-split > div[style*="margin-left"] {
+                margin-left: auto !important;
+                margin-right: auto !important;
+            }
             .img-responsive {width: 100% !important; height: auto !important;}
             .table-scroll {overflow-x: auto; display: block;}
             .mobile-padding {padding-left: 15px !important; padding-right: 15px !important;}
@@ -68,8 +73,8 @@
 
                     <tr>
                         <td class="mobile-padding" style="padding:10px 30px 20px 30px;">
-                            <h1 class="heading-font" style="font-family:'Playfair Display', Georgia, serif;font-size:24px;margin:0 0 20px 0;color:#00193C;text-align:center;">The 2025 Finale</h1>
-                            <p class="body-font" style="font-family:'Poppins', Arial, sans-serif;font-size:14px;line-height:26px;color:#000000;margin:0;text-align:justify;">
+                            <h1 class="heading-font" style="font-family:'Playfair Display', Georgia, serif;font-size:24px;margin:0 0 10px 0;color:#00193C;text-align:center;">The 2025 Finale</h1>
+                            <p class="body-font" style="font-family:'Poppins', Arial, sans-serif;font-size:14px;line-height:26px;color:#000000;margin:0;text-align:left;">
                                 Dear Client,<br>
                                 As we close the books on 2025, the markets have offered a dramatic finale. While Gold touches historic highs near &#8377;1.36 Lakh, the broader equity indices have entered a consolidation phase.
                             </p>
@@ -78,7 +83,7 @@
 
                     <tr>
                         <td class="mobile-padding" style="padding:0 30px 30px 30px;">
-                            <h2 class="heading-font" style="font-family:'Playfair Display', Georgia, serif;font-size:18px;color:#00193C;margin:0 0 15px 0;text-align:center;">Chart of the Week: S&P 500's Record-Breaking Run</h2>
+                            <h2 class="heading-font" style="font-family:'Playfair Display', Georgia, serif;font-size:18px;color:#00193C;margin:0 0 15px 0;text-align:left;text-decoration: underline;">Chart of the Week: S&P 500's Record-Breaking Run</h2>
                             
                             <table role="presentation" width="100%" border="0" cellspacing="0" cellpadding="0">
                                 <tr>
@@ -89,7 +94,7 @@
                             </table>
 
                             <div style="background-color:#F9F9F9;padding:15px;margin-top:15px;border-left:4px solid #BA9851;">
-                                <p class="body-font" style="font-family:'Poppins', Arial, sans-serif;font-size:14px;line-height:24px;color:#000000;margin:0;text-align:justify;">
+                                <p class="body-font" style="font-family:'Poppins', Arial, sans-serif;font-size:14px;line-height:24px;color:#000000;margin:0;text-align:left;">
                                     <strong>Insight:</strong> The S&P 500 has concluded 2025 with a resounding statement, shattering previous records to achieve a market capitalization of <strong>$61.9 Trillion</strong>. After a significant dip in early April, the index demonstrated a powerful and sustained recovery, highlighting immense investor confidence and a voracious appetite for US equities. This year-end peak signals strong momentum heading into 2026.
                                 </p>
                             </div>
@@ -102,43 +107,43 @@
                                 <tr><td style="border-bottom:1px solid #BA9851;font-size:0;line-height:0;">&nbsp;</td></tr>
                             </table>
 
-                            <h2 class="heading-font" style="font-family:'Playfair Display', Georgia, serif;font-size:18px;color:#00193C;margin:0 0 15px 0;text-align:left;">Market Watch</h2>
+                            <h2 class="heading-font" style="font-family:'Playfair Display', Georgia, serif;font-size:18px;color:#00193C;margin:0 0 15px 0;text-align:left;text-decoration: underline;">Market Watch</h2>
                             <div class="table-scroll">
                                 <table role="presentation" width="100%" border="0" cellspacing="0" cellpadding="0" style="border:1px solid #eeeeee;">
                                     <tr style="background-color:#00193C;color:#ffffff;">
                                         <td class="body-font" style="font-family:'Poppins', Arial, sans-serif;padding:10px;font-size:13px;font-weight:600;color: #eeeeee;">Index</td>
-                                        <td class="body-font" style="font-family:'Poppins', Arial, sans-serif;padding:10px;font-size:13px;font-weight:600;color: #eeeeee;text-align:center;">Value</td>
-                                        <td class="body-font" style="font-family:'Poppins', Arial, sans-serif;padding:10px;font-size:13px;font-weight:600;color: #eeeeee;text-align:center;">Weekly %</td>
+                                        <td class="body-font" style="font-family:'Poppins', Arial, sans-serif;padding:10px;font-size:13px;font-weight:600;color: #eeeeee;text-align:center;">LTP</td>
+                                        <td class="body-font" style="font-family:'Poppins', Arial, sans-serif;padding:10px;font-size:13px;font-weight:600;color: #eeeeee;text-align:center;">1W %</td>
                                         <td class="body-font" style="font-family:'Poppins', Arial, sans-serif;padding:10px;font-size:13px;font-weight:600;color: #eeeeee;text-align:center;">YTD %</td>
-                                        <td class="body-font" style="font-family:'Poppins', Arial, sans-serif;padding:10px;font-size:13px;font-weight:600;color: #eeeeee;text-align:center;">Weekly Trend</td>
+                                        <td class="body-font" style="font-family:'Poppins', Arial, sans-serif;padding:10px;font-size:13px;font-weight:600;color: #eeeeee;text-align:center;">Trend</td>
                                     </tr>
                                     <tr>
                                         <td class="body-font" style="font-family:'Poppins', Arial, sans-serif;padding:10px;border-bottom:1px solid #eeeeee;color:#000000;font-weight:500;font-size: 12px">NIFTY 50</td>
                                         <td class="body-font" style="font-family:'Poppins', Arial, sans-serif;padding:10px;border-bottom:1px solid #eeeeee;text-align:center;color:#000000;font-size: 12px;">25,939</td>
                                         <td class="body-font" style="font-family:'Poppins', Arial, sans-serif;padding:10px;border-bottom:1px solid #eeeeee;text-align:center;color:#d9534f;font-size: 12px">-0.65%</td>
                                         <td class="body-font" style="font-family:'Poppins', Arial, sans-serif;padding:10px;border-bottom:1px solid #eeeeee;text-align:center;color:#5cb85c;font-size: 12px">+10.6%</td>
-                                        <td class="body-font" style="font-family:'Poppins', Arial, sans-serif;padding:10px;border-bottom:1px solid #eeeeee;text-align:center;color:#d9534f;font-size: 12px">&#9660; Consolidation</td>
+                                        <td class="body-font" style="font-family:'Poppins', Arial, sans-serif;padding:10px;border-bottom:1px solid #eeeeee;text-align:center;color:#d9534f;font-size: 10px">&#9660; Consolidation</td>
                                     </tr>
                                     <tr>
                                         <td class="body-font" style="font-family:'Poppins', Arial, sans-serif;padding:10px;border-bottom:1px solid #eeeeee;color:#000000;font-weight:500;font-size: 12px">SENSEX</td>
                                         <td class="body-font" style="font-family:'Poppins', Arial, sans-serif;padding:10px;border-bottom:1px solid #eeeeee;text-align:center;color:#000000;font-size: 12px">84,675</td>
                                         <td class="body-font" style="font-family:'Poppins', Arial, sans-serif;padding:10px;border-bottom:1px solid #eeeeee;text-align:center;color:#d9534f;font-size: 12px">-0.72%</td>
                                         <td class="body-font" style="font-family:'Poppins', Arial, sans-serif;padding:10px;border-bottom:1px solid #eeeeee;text-align:center;color:#5cb85c;font-size: 12px">+9.0%</td>
-                                        <td class="body-font" style="font-family:'Poppins', Arial, sans-serif;padding:10px;border-bottom:1px solid #eeeeee;text-align:center;color:#d9534f;font-size: 12px">&#9660; Profit Booking</td>
+                                        <td class="body-font" style="font-family:'Poppins', Arial, sans-serif;padding:10px;border-bottom:1px solid #eeeeee;text-align:center;color:#d9534f;font-size: 10px">&#9660; Profit Booking</td>
                                     </tr>
                                     <tr>
-                                        <td class="body-font" style="font-family:'Poppins', Arial, sans-serif;padding:10px;border-bottom:1px solid #eeeeee;color:#000000;font-weight:500;font-size: 12px">S&P 500 (US)</td>
+                                        <td class="body-font" style="font-family:'Poppins', Arial, sans-serif;padding:10px;border-bottom:1px solid #eeeeee;color:#000000;font-weight:500;font-size: 12px">S&P 500</td>
                                         <td class="body-font" style="font-family:'Poppins', Arial, sans-serif;padding:10px;border-bottom:1px solid #eeeeee;text-align:center;color:#000000;font-size: 12px">6,896</td>
                                         <td class="body-font" style="font-family:'Poppins', Arial, sans-serif;padding:10px;border-bottom:1px solid #eeeeee;text-align:center;color:#5cb85c;font-size: 12px">+0.25%</td>
                                         <td class="body-font" style="font-family:'Poppins', Arial, sans-serif;padding:10px;border-bottom:1px solid #eeeeee;text-align:center;color:#5cb85c;font-size: 12px">+21.5%</td>
-                                        <td class="body-font" style="font-family:'Poppins', Arial, sans-serif;padding:10px;border-bottom:1px solid #eeeeee;text-align:center;color:#5cb85c;font-size: 12px">&#9650; Flat/Positive</td>
+                                        <td class="body-font" style="font-family:'Poppins', Arial, sans-serif;padding:10px;border-bottom:1px solid #eeeeee;text-align:center;color:#5cb85c;font-size: 10px">&#9650; Flat/Positive</td>
                                     </tr>
                                     <tr>
                                         <td class="body-font" style="font-family:'Poppins', Arial, sans-serif;padding:10px;border-bottom:1px solid #eeeeee;color:#000000;font-weight:500;font-size: 12px">NASDAQ</td>
                                         <td class="body-font" style="font-family:'Poppins', Arial, sans-serif;padding:10px;border-bottom:1px solid #eeeeee;text-align:center;color:#000000;font-size: 12px">23,419</td>
                                         <td class="body-font" style="font-family:'Poppins', Arial, sans-serif;padding:10px;border-bottom:1px solid #eeeeee;text-align:center;color:#5cb85c;font-size: 12px">+0.75%</td>
                                         <td class="body-font" style="font-family:'Poppins', Arial, sans-serif;padding:10px;border-bottom:1px solid #eeeeee;text-align:center;color:#5cb85c;font-size: 12px">+29.2%</td>
-                                        <td class="body-font" style="font-family:'Poppins', Arial, sans-serif;padding:10px;border-bottom:1px solid #eeeeee;text-align:center;color:#5cb85c;font-size: 12px">&#9650; Tech Rally</td>
+                                        <td class="body-font" style="font-family:'Poppins', Arial, sans-serif;padding:10px;border-bottom:1px solid #eeeeee;text-align:center;color:#5cb85c;font-size: 10px">&#9650; Tech Rally</td>
                                     </tr>
                                 </table>
                             </div>
@@ -147,10 +152,10 @@
 
                     <tr>
                         <td class="mobile-padding" style="padding:0 30px 30px 30px;">
-                            <h2 class="heading-font" style="font-family:'Playfair Display', Georgia, serif;font-size:18px;color:#00193C;margin:0 0 10px 0;text-align:left;">Broad Market View</h2>
-                            <p class="body-font" style="font-family:'Poppins', Arial, sans-serif;font-size:14px;line-height:26px;color:#000000;margin:0;text-align:justify;">
+                            <h2 class="heading-font" style="font-family:'Playfair Display', Georgia, serif;font-size:18px;color:#00193C;margin:0 0 10px 0;text-align:left;text-decoration: underline;">Broad Market View</h2>
+                            <p class="body-font" style="font-family:'Poppins', Arial, sans-serif;font-size:14px;line-height:26px;color:#000000;margin:0;text-align:left;">
                                 <strong>The Year-End Lull:</strong> The Indian equity markets witnessed a "year-end lull" this week, with the Nifty failing to hold the psychological 26,000 mark. The week was characterized by FII (Foreign Institutional Investor) outflows, as foreigners dumped a record number of Indian bonds and equities to book profits before the calendar turn.
-                                <br>
+                                <br><br>
                                 Volatility remains the key theme. While the IT sector faced headwinds from global cues, the Steel sector saw a brief rally of up to 5% triggered by the imposition of a 3-year safeguard duty.
                             </p>
                         </td>
@@ -162,7 +167,7 @@
                                 <tr><td style="border-bottom:1px solid #BA9851;font-size:0;line-height:0;">&nbsp;</td></tr>
                             </table>
 
-                            <h2 class="heading-font" style="font-family:'Playfair Display', Georgia, serif;font-size:18px;color:#00193C;margin:0 0 15px 0;text-align:left;">Commodity Corner</h2>
+                            <h2 class="heading-font" style="font-family:'Playfair Display', Georgia, serif;font-size:18px;color:#00193C;margin:0 0 15px 0;text-align:left;text-decoration: underline;">Commodity Corner</h2>
                             
                             <table role="presentation" width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-bottom:20px;">
                                 <tr>
@@ -176,7 +181,7 @@
                                         </div>
                                         
                                         <div class="col-split" style="display:inline-block;max-width:260px;vertical-align:top;width:100%;">
-                                            <div style="background-color:#F9F9F9;padding:15px;border-left:4px solid #00193C;margin-left:10px;">
+                                            <div style="background-color:#F9F9F9;padding:15px;border-left:4px solid #BA9851;margin-left:10px;">
                                                 <h3 class="heading-font" style="font-family:'Playfair Display', Georgia, serif;font-size:16px;margin:0 0 5px 0;color:#000000;">Silver</h3>
                                                 <p class="body-font" style="font-family:'Poppins', Arial, sans-serif;font-size:18px;font-weight:600;margin:0 0 5px 0;color:#00193C;">&#8377;1,05,200</p>
                                                 <p class="body-font" style="font-family:'Poppins', Arial, sans-serif;font-size:12px;margin:0;color:#666666;">per kg</p>
@@ -191,7 +196,7 @@
                                 <tr>
                                     <td align="center" valign="top" style="font-size:0;padding:0;">
                                         <div class="col-split" style="display:inline-block;max-width:260px;vertical-align:top;width:100%;">
-                                            <div style="background-color:#F9F9F9;padding:15px;border-left:4px solid #00193C;margin-right:10px;">
+                                            <div style="background-color:#F9F9F9;padding:15px;border-left:4px solid #BA9851;margin-right:10px;">
                                                 <h3 class="heading-font" style="font-family:'Playfair Display', Georgia, serif;font-size:16px;margin:0 0 5px 0;color:#000000;">Crude Oil (WTI)</h3>
                                                 <p class="body-font" style="font-family:'Poppins', Arial, sans-serif;font-size:18px;font-weight:600;margin:0 0 5px 0;color:#00193C;">$57.90</p>
                                                 <p class="body-font" style="font-family:'Poppins', Arial, sans-serif;font-size:12px;margin:0;color:#666666;">per barrel</p>
@@ -219,8 +224,8 @@
                                 <tr><td style="border-bottom:1px solid #BA9851;font-size:0;line-height:0;">&nbsp;</td></tr>
                             </table>
 
-                            <h2 class="heading-font" style="font-family:'Playfair Display', Georgia, serif;font-size:18px;color:#00193C;margin:0 0 10px 0;text-align:left;">Theme of the Week: The IPO Gold Rush</h2>
-                            <p class="body-font" style="font-family:'Poppins', Arial, sans-serif;font-size:14px;line-height:26px;color:#000000;margin:0;text-align:justify;">
+                            <h2 class="heading-font" style="font-family:'Playfair Display', Georgia, serif;font-size:18px;color:#00193C;margin:0 0 10px 0;text-align:left;text-decoration: underline;">Theme of the Week: The IPO Gold Rush</h2>
+                            <p class="body-font" style="font-family:'Poppins', Arial, sans-serif;font-size:14px;line-height:26px;color:#000000;margin:0;text-align:left;">
                                 <strong>FY2025: A Historic Year for Indian Primary Markets.</strong>
                                 <br>
                                 The biggest financial story as we close the year is the unprecedented liquidity event in the primary markets. India's IPO market hit a record <strong>&#8377;1.95 Lakh Crore</strong> in fundraising for FY2025, eclipsing all previous records.
@@ -233,8 +238,8 @@
                     <tr>
                         <td class="mobile-padding" style="padding:30px;background-color:#F9F9F9;">
 
-                            <h2 class="heading-font" style="font-family:'Playfair Display', Georgia, serif;font-size:18px;color:#BA9851;margin:0 0 15px 0;text-align:left;">Deals Under Watch</h2>
-                            <ul class="body-font" style="font-family:'Poppins', Arial, sans-serif;padding-left:20px;margin:0;font-size:14px;line-height:26px;color:#000000;text-align:justify;">
+                            <h2 class="heading-font" style="font-family:'Playfair Display', Georgia, serif;font-size:18px;color:#BA9851;margin:0 0 15px 0;text-align:left;text-decoration: underline;">Deals Under Watch</h2>
+                            <ul class="body-font" style="font-family:'Poppins', Arial, sans-serif;padding-left:20px;margin:0;font-size:14px;line-height:26px;color:#000000;text-align:left">
                                 <li style="margin-bottom:10px;">
                                     <strong>Zepto:</strong> The quick-commerce giant continues its aggressive capitalization, leading 2025's growth-stage rounds with a fresh <strong>$450 Million</strong> raise.
                                 </li>
@@ -249,10 +254,10 @@
                     </tr>
 
                     <tr>
-                         <td class="mobile-padding" style="padding:0 30px 10px 30px;">
+                         <td class="mobile-padding" style="padding:0 30px 0px 30px;">
 
-                            <h2 class="heading-font" style="font-family:'Playfair Display', Georgia, serif;font-size:18px;color:#00193C;margin:30px 0 15px 0;text-align:left;">Expert's Opinion</h2>
-                            <p class="body-font" style="font-family:'Poppins', Arial, sans-serif;font-size:14px;color:#000000;font-style:italic;margin-bottom:20px;text-align:justify;">
+                            <h2 class="heading-font" style="font-family:'Playfair Display', Georgia, serif;font-size:18px;color:#00193C;margin:30px 0 10px 0;text-align:left;text-decoration: underline;">Expert's Opinion</h2>
+                            <p class="body-font" style="font-family:'Poppins', Arial, sans-serif;font-size:14px;color:#000000;font-style:italic;margin-bottom:20px;text-align:left;">
                                 <strong>Q&A with Neelesh Surana, CIO at Mirae Asset Investment Managers</strong>
                             </p>
                             
@@ -270,37 +275,41 @@
 
                      <tr>
                         <td class="mobile-padding" style="padding:0 30px 40px 30px;">
-                            <table role="presentation" width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-bottom:25px;margin-top:25px;">
+                            <table role="presentation" width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-bottom:25px;margin-top:0px;">
                                 <tr><td style="border-bottom:1px solid #BA9851;font-size:0;line-height:0;">&nbsp;</td></tr>
                             </table>
 
-                            <h2 class="heading-font" style="font-family:'Playfair Display', Georgia, serif;font-size:18px;color:#00193C;margin:0 0 15px 0;text-align:left;">Weekly Reading List</h2>
+                            <h2 class="heading-font" style="font-family:'Playfair Display', Georgia, serif;font-size:18px;color:#00193C;margin:0 0 15px 0;text-align:left;text-decoration: underline;">Weekly Reading List</h2>
                             
                             <p class="body-font" style="font-family:'Poppins', Arial, sans-serif;margin:0 0 15px 0;text-align:left;">
-                                <a href="#" style="font-size:14px;color:#00193C;text-decoration:none;font-weight:600;">&#10148; Why 2026 will be a Stock Picker's Market</a><br>
+                                <a href="#" style="font-size:14px;color:#002D6C;text-decoration:none;font-weight:600;font-style: italic;">&#10148; Why 2026 will be a Stock Picker's Market</a><br>
                                 <span style="font-size:12px;color:#666666;">A deep dive into why index hugging might fail next year.</span>
                             </p>
 
                             <p class="body-font" style="font-family:'Poppins', Arial, sans-serif;margin:0;text-align:left;">
-                                <a href="#" style="font-size:14px;color:#00193C;text-decoration:none;font-weight:600;">&#10148; Gold vs. Bitcoin: The 2025 Hedge Battle</a><br>
+                                <a href="#" style="font-size:14px;color:#002D6C;text-decoration:none;font-weight:600;font-style: italic;">&#10148; Gold vs. Bitcoin: The 2025 Hedge Battle</a><br>
                                 <span style="font-size:12px;color:#666666;">Analyzing asset correlations during the year-end volatility.</span>
                             </p>
                         </td>
                     </tr>
 
                     <tr>
-                        <td style="background-color:#00193C;color:#ffffff;padding:30px;text-align:center;">
-                            <p class="body-font" style="font-family:'Poppins', Arial, sans-serif;font-size:12px;line-height:18px;margin:0 0 10px 0;color:#BA9851;">
-                                &copy; 2025 AstaGuru PRIVÉ Wealth Management. All rights reserved.
+                        <td style="background-color:#00193C;color:#ffffff;padding:15px;text-align:center;">
+                            <p class="body-font" style="font-family:'Poppins', Arial, sans-serif;font-size:12px;line-height:18px;margin:0 0 5px 0;color:#BA9851;">
+                                &copy; 2025 AstaGuru Prive´ Private Limited. All rights reserved.
                             </p>
-                            <p class="body-font" style="font-family:'Poppins', Arial, sans-serif;font-size:12px;line-height:18px;margin:0 0 10px 0;color:#cccccc;">
-                                12th Floor, One International Center, Senapati Bapat Marg, Mumbai, India.
+                            <p class="body-font" style="font-family:'Poppins', Arial, sans-serif;font-size:10px;margin:10px 0 10px 0;text-align:center;">
+                                <a href="www.astaguruprive.com/about" style="color:#BA9851;text-decoration:underline;">About Us</a><span style="color:#BA9851;"> | </span><a href="https://www.astaguruprive.com/terms-of-use" style="color:#BA9851;text-decoration:underline;">Terms & Conditions</a> <span style="color:#BA9851;">|</span> <a href="https://www.astaguruprive.com/privacy-policy" style="color:#BA9851;text-decoration:underline;">Privacy Policy</a>
                             </p>
-                            <p class="body-font" style="font-family:'Poppins', Arial, sans-serif;font-size:10px;line-height:16px;color:#999999;margin:0;">
+                            <p class="body-font" style="font-family:'Poppins', Arial, sans-serif;font-size:10px;line-height:18px;margin:0 0 10px 0;color:#cccccc;">
+                                Our registered office address: 2nd Floor, Bhogilal Hargovindas Building, 18/20 K Dubash Marg, Kala Ghoda, Fort, Mumbai - 400001
+                            </p>
+                            <p class="body-font" style="font-family:'Poppins', Arial, sans-serif;font-size:10px;line-height:16px;color:#999999;margin:0;text-align: left;">
                                 <strong>Disclaimer:</strong> Investments in securities market are subject to market risks. Read all the related documents carefully before investing. This newsletter is for information purposes only and does not constitute financial advice.
                             </p>
-                            <p class="body-font" style="font-family:'Poppins', Arial, sans-serif;font-size:12px;margin-top:15px;">
-                                <a href="#" style="color:#BA9851;text-decoration:underline;">Unsubscribe</a>
+                            <br>
+                            <p class="body-font" style="font-family:'Poppins', Arial, sans-serif;font-size:10px;line-height:16px;color:#999999;margin:0;text-align: left;">
+                                You're getting this email because you're an esteemed client of AstaGuru and we believe you deserve great finance content and the latest updates from us. However, you have the option to <a href="*|UNSUB|*" style="color: #999999">unsubscribe here</a>. 
                             </p>
                         </td>
                     </tr>
@@ -309,6 +318,5 @@
             </td>
         </tr>
     </table>
-    <a href="*|UNSUB|*" style="color: #4a4a4a;">Unsubscribe from this list</a>
 </body>
 </html>
