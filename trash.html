@@ -1,0 +1,55 @@
+<table align="left" border="0" cellpadding="0" cellspacing="0" style="max-width:384px;" width="100%" class="columnContainer">
+<tr>
+    <td valign="top">
+        <div mc:edit="preheader_leftcol_content">
+            <p>Use this area to offer a short preview of your email's content.</p>
+        </div>
+    </td>
+</tr>
+</table>
+<table align="left" border="0" cellpadding="0" cellspacing="0" style="max-width:180px;" width="100%" class="columnContainer">
+<tr>
+    <td valign="top">
+        <div mc:edit="preheader_rightcol_content">
+            <p><a href="*|ARCHIVE|*" target="_blank">View email in your browser</a></p>
+        </div>
+    </td>
+</tr>
+</table>
+
+<tr>
+    <td valign="top" id="footerContent">
+        <div mc:edit="footer_content">
+            *|IF:LIST|*
+            <em>Copyright &copy; *|CURRENT_YEAR|* *|LIST:COMPANY|*, All rights reserved.</em>
+            <br>
+            <!-- *|IFNOT:ARCHIVE_PAGE|* -->
+            *|LIST:DESCRIPTION|*
+            <br>
+            <strong>Our mailing address is:</strong>
+            <br> *|HTML:LIST_ADDRESS_HTML|*
+            <br>
+            <!-- *|END:IF|* -->
+            *|ELSE:|*
+            <!-- *|IFNOT:ARCHIVE_PAGE|* -->
+            <em>Copyright &copy; *|CURRENT_YEAR|* *|USER:COMPANY|*, All rights reserved.</em>
+            <br>
+            <strong>Our mailing address is:</strong>
+            <br> *|USER:ADDRESS_HTML|*
+            <!-- *|END:IF|* -->
+            *|END:IF|*
+        </div>
+        <div mc:edit="monkeyrewards">
+            *|IF:REWARDS|* *|HTML:REWARDS|* *|END:IF|*
+        </div>
+    </td>
+</tr>
+<tr>
+    <td valign="top" id="utilityBar">
+        <div mc:edit="utility_bar">
+            <a href="*|UNSUB|*" class="utilityLink">unsubscribe from this list</a><span class="mobileHide"> | </span><a href="*|UPDATE_PROFILE|*" class="utilityLink">update subscription preferences</a>
+            <!-- *|IFNOT:ARCHIVE_PAGE|* --><span class="mobileHide"> | </span><a href="*|ARCHIVE|*" class="utilityLink">view email in browser</a>
+            <!-- *|END:IF|* -->
+        </div>
+    </td>
+</tr>
