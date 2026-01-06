@@ -10,72 +10,194 @@
     <meta name="supported-color-schemes" content="light">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Playfair+Display+SC:wght@600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-    <style>
-        :root {
-            color-scheme: light;
-            supported-color-schemes: light;
-        }
-        /* CLIENT-SPECIFIC RESETS */
-        body, table, td, a {-webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%;}
-        table, td {mso-table-lspace: 0pt; mso-table-rspace: 0pt;}
-        img {-ms-interpolation-mode: bicubic;}
+    
+<style type="text/css">
+		:root{
+			color-scheme:light;
+			supported-color-schemes:light;
+		}
+		body,table,td,a{
+			-webkit-text-size-adjust:100%;
+			-ms-text-size-adjust:100%;
+		}
+		table,td{
+			mso-table-lspace:0pt;
+			mso-table-rspace:0pt;
+		}
+		img{
+			-ms-interpolation-mode:bicubic;
+		}
+		body{
+			margin:0;
+			padding:0;
+			background-color:#f4f4f4;
+			width:100% !important;
+			height:100% !important;
+		}
+		img{
+			border:0;
+			height:auto;
+			line-height:100%;
+			outline:none;
+			text-decoration:none;
+			display:block;
+		}
+		table{
+			border-collapse:collapse !important;
+		}
+		table,td,div,h1,p{
+			font-family:'Poppins', Arial, sans-serif;
+			color:#000000;
+		}
+		h1,h2,h3,h4{
+			font-family:'Playfair Display', Georgia, serif;
+			color:#00193C;
+		}
+		.mobile-hide{
+			display:block;
+		}
+	@media screen and (max-width: 600px){
+		.container{
+			width:100% !important;
+			max-width:100% !important;
+		}
 
-        /* GENERAL STYLES */
-        body {margin: 0; padding: 0; background-color: #f4f4f4; width: 100% !important; height: 100% !important;}
-        img {border: 0; height: auto; line-height: 100%; outline: none; text-decoration: none; display: block;}
-        table {border-collapse: collapse !important;}
+}	@media screen and (max-width: 600px){
+		.mobile-hide{
+			display:none !important;
+		}
 
-        /* TYPOGRAPHY */
-        table, td, div, h1, p {font-family: 'Poppins', Arial, sans-serif; color: #000000;}
-        h1, h2, h3, h4 {font-family: 'Playfair Display', Georgia, serif; color: #00193C;}
-        
-        /* RESPONSIVE LAYOUT */
-        .mobile-hide {display: block;}
-        
-        @media screen and (max-width: 600px) {
-            .container {width: 100% !important; max-width: 100% !important;}
-            .mobile-hide {display: none !important;}
-            /* Force columns to stack on mobile */
-            .col-split {display: block !important; width: 100% !important; padding-right: 0 !important; padding-left: 0 !important; margin-bottom: 20px; text-align: center !important;}
-            .col-split > div[style*="margin-right"],
-            .col-split > div[style*="margin-left"] {
-                margin-left: auto !important;
-                margin-right: auto !important;
-            }
-            .img-responsive {width: 100% !important; height: auto !important;}
-            .table-scroll {overflow-x: auto; display: block;}
-            .mobile-padding {padding-left: 15px !important; padding-right: 15px !important;}
-        }
-        @media (prefers-color-scheme: dark) {
-            body {background-color: #f4f4f4 !important;}
-            table[role="presentation"] {background-color: #f4f4f4 !important;}
-            .container {background-color: #ffffff !important;}
-            div[style*="background-color:#F9F9F9"] {background-color: #F9F9F9 !important;}
-            td[style*="background-color:#00193C"], tr[style*="background-color:#00193C"] {background-color: #00193C !important;}
+}	@media screen and (max-width: 600px){
+		.col-split{
+			display:block !important;
+			width:100% !important;
+			padding-right:0 !important;
+			padding-left:0 !important;
+			margin-bottom:20px;
+			text-align:center !important;
+		}
 
-            .sc-heading-font {color: #00193C !important;}
-            .heading-font {color: #00193C !important;}
-            p.body-font, li.body-font, span.body-font {color: #000000 !important;}
+}	@media screen and (max-width: 600px){
+		.col-split>div[style*=margin-right],.col-split > div[style*=margin-left]{
+			margin-left:auto !important;
+			margin-right:auto !important;
+		}
 
-            p[style*="color:#666666"], span[style*="color:#666666"], td[style*="color:#666666"] {color: #666666 !important;}
-            p[style*="color:#000000"], span[style*="color:#000000"], td[style*="color:#000000"], li, strong {color: #000000 !important;}
-            td[style*="color: #eeeeee"] {color: #eeeeee !important;}
-            td[style*="color:#d9534f"], span[style*="color: #d9534f"] {color: #d9534f !important;}
-            td[style*="color:#5cb85c"], span[style*="color: #5cb85c"] {color: #5cb85c !important;}
-            p[style*="color:#00193C"] {color: #00193C !important;}
-            a[style*="#002D6C"] {color: #002D6C !important;}
-            p[style*="#BA9851"], a[style*="#BA9851"], span[style*="#BA9851"] {color: #BA9851 !important;}
-            p[style*="#999999"], a[style*="#999999"] {color: #999999 !important;}
-            h3[style*="#000000"] {color: #000000 !important;}
-        }
-    </style>
-</head>
+}	@media screen and (max-width: 600px){
+		.img-responsive{
+			width:100% !important;
+			height:auto !important;
+		}
+
+}	@media screen and (max-width: 600px){
+		.table-scroll{
+			overflow-x:auto;
+			display:block;
+		}
+
+}	@media screen and (max-width: 600px){
+		.mobile-padding{
+			padding-left:15px !important;
+			padding-right:15px !important;
+		}
+
+}	@media (prefers-color-scheme: dark){
+		body{
+			background-color:#f4f4f4 !important;
+		}
+
+}	@media (prefers-color-scheme: dark){
+		table[role=presentation]{
+			background-color:#f4f4f4 !important;
+		}
+
+}	@media (prefers-color-scheme: dark){
+		.container{
+			background-color:#ffffff !important;
+		}
+
+}	@media (prefers-color-scheme: dark){
+		div[style*=background-color:#F9F9F9]{
+			background-color:#F9F9F9 !important;
+		}
+
+}	@media (prefers-color-scheme: dark){
+		td[style*=background-color:#00193C],tr[style*=background-color:#00193C]{
+			background-color:#00193C !important;
+		}
+
+}	@media (prefers-color-scheme: dark){
+		.sc-heading-font{
+			color:#00193C !important;
+		}
+
+}	@media (prefers-color-scheme: dark){
+		.heading-font{
+			color:#00193C !important;
+		}
+
+}	@media (prefers-color-scheme: dark){
+		p.body-font,li.body-font,span.body-font{
+			color:#000000 !important;
+		}
+
+}	@media (prefers-color-scheme: dark){
+		p[style*=color:#666666],span[style*=color:#666666],td[style*=color:#666666]{
+			color:#666666 !important;
+		}
+
+}	@media (prefers-color-scheme: dark){
+		p[style*=color:#000000],span[style*=color:#000000],td[style*=color:#000000],li,strong{
+			color:#000000 !important;
+		}
+
+}	@media (prefers-color-scheme: dark){
+		td[style*=color: #eeeeee]{
+			color:#eeeeee !important;
+		}
+
+}	@media (prefers-color-scheme: dark){
+		td[style*=color:#d9534f],span[style*=color: #d9534f]{
+			color:#d9534f !important;
+		}
+
+}	@media (prefers-color-scheme: dark){
+		td[style*=color:#5cb85c],span[style*=color: #5cb85c]{
+			color:#5cb85c !important;
+		}
+
+}	@media (prefers-color-scheme: dark){
+		p[style*=color:#00193C]{
+			color:#00193C !important;
+		}
+
+}	@media (prefers-color-scheme: dark){
+		a[style*=#002D6C]{
+			color:#002D6C !important;
+		}
+
+}	@media (prefers-color-scheme: dark){
+		p[style*=#BA9851],a[style*=#BA9851],span[style*=#BA9851]{
+			color:#BA9851 !important;
+		}
+
+}	@media (prefers-color-scheme: dark){
+		p[style*=#999999],a[style*=#999999]{
+			color:#999999 !important;
+		}
+
+}	@media (prefers-color-scheme: dark){
+		h3[style*=#000000]{
+			color:#000000 !important;
+		}
+
+}</style></head>
 <body style="margin:0;padding:0;background-color:#f4f4f4;">
     <div style="display:none;font-size:1px;color:#f4f4f4;line-height:1px;max-height:0px;max-width:0px;opacity:0;overflow:hidden;">
-        Gold hits record highs while Nifty consolidates. Discover the 2026 outlook, IPO trends, and why asset divergence is the theme of the year.
+        Why where you invest matters more than predicting the market’s next move.
         &zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;
     </div>
 
@@ -89,14 +211,14 @@
                 </tr>
                 <tr>
                     <td align="center" style="padding:10px 0 10px 0;background-color:#00193C;">
-                        <img src="*|BRAND:LOGO|*" alt="AstaGuru PRIVÉ" width="50" style="width:100px;height: auto;;display:block;border:0;" />
+                        <img src="*|BRAND:LOGO|*" alt="AstaGuru PRIVÉ" width="50" style="width:100px;height: auto;;display:block;border:0;">
                     </td>
                 </tr>
 
                 <tr>
                     <td align="center" class="mobile-padding" style="padding:30px 30px 0px 30px;">
                         <p class="sc-heading-font" style="font-family:'Playfair Display SC', Georgia, serif;font-size:20px;font-weight:600;color:#00193C;margin:0;letter-spacing:1px;text-transform:uppercase;">Weekly Market Insights</p>
-                        <p class="body-font" style="font-family:'Poppins', Arial, sans-serif;font-size:14px;color:#666666;margin-top:10px;">26st Dec 2025 - 2nd Jan 2026</p>
+                        <p class="body-font" style="font-family:'Poppins', Arial, sans-serif;font-size:14px;color:#666666;margin-top:10px;">26th Dec 2025 - 2nd Jan 2026</p>
                     </td>
                 </tr>
 
@@ -119,7 +241,7 @@
                         <table role="presentation" width="100%" border="0" cellspacing="0" cellpadding="0">
                             <tr>
                                 <td align="center">
-                                    <img src="https://astaguruprive-s3.s3.ap-south-1.amazonaws.com/Email+Newsletter/Chart+of+the+Week.jpg" alt="Global Markets Enter Divergent Paths" width="540" class="img-responsive" style="width:540px;height:auto;display:block;border:1px solid #eeeeee;" />
+                                    <img src="https://astaguruprive-s3.s3.ap-south-1.amazonaws.com/Email+Newsletter/Chart+of+the+Week.jpg" alt="Global Markets Enter Divergent Paths" width="540" class="img-responsive" style="width:540px;height:auto;display:block;border:1px solid #eeeeee;">
                                 </td>
                             </tr>
                         </table>
@@ -139,7 +261,7 @@
                             <tr><td style="border-bottom:1px solid #BA9851;font-size:0;line-height:0;">&nbsp;</td></tr>
                         </table>
 
-                        <div><span><h2 class="heading-font" style="font-family:'Playfair Display', Georgia, serif;font-size:18px;color:#00193C;margin:0 0 15px 0;text-align:left; text-decoration: underline;">Market Watch </span><span style="font-size: 14px;font-style: italic;text-decoration: non;">(as of 2nd Jan, 2026)</span></h2></div>
+                        <h2 class="heading-font" style="font-family:'Playfair Display', Georgia, serif;font-size:18px;color:#00193C;margin:0 0 15px 0;text-align:left; text-decoration: underline;">Market Watch </h2>
                         <div class="table-scroll">
                             <table role="presentation" width="100%" border="0" cellspacing="0" cellpadding="0" style="border:1px solid #ecebeb;">
                                 <tr style="background-color:#00193C;color:#ffffff;">
@@ -178,6 +300,12 @@
                                     <td class="body-font" style="font-family:'Poppins', Arial, sans-serif;padding:10px;border-bottom:1px solid #eeeeee;text-align:center;color:#d9534f;font-size: 10px">&#9660; Flat</td>
                                 </tr>
                             </table>
+                            <p class="body-font" style="font-family:'Poppins', Arial, sans-serif;font-size:10px;line-height:26px;color:#000000;margin:0;text-align:left;margin-top: 5px;font-style: italic;">
+                                (As of week 26th Dec 2025 - 2nd Jan 2026)
+                            </p>
+                            <p class="body-font" style="font-family:'Poppins', Arial, sans-serif;font-size:10px;line-height:26px;color:#000000;margin:0 0 0 0;text-align:left;font-style: italic;">
+                                *Sources : Investing.com, Moneycontrol
+                            </p>
                         </div>
                     </td>
                 </tr>
@@ -224,7 +352,7 @@
                             </tr>
                         </table>
 
-                            <table role="presentation" width="100%" border="0" cellspacing="0" cellpadding="0">
+                        <table role="presentation" width="100%" border="0" cellspacing="0" cellpadding="0">
                             <tr>
                                 <td align="center" valign="top" style="font-size:0;padding:0;">
                                     <div class="col-split" style="display:inline-block;max-width:260px;vertical-align:top;width:100%;">
@@ -246,7 +374,12 @@
                                     </td>
                             </tr>
                         </table>
-
+                        <p class="body-font" style="font-family:'Poppins', Arial, sans-serif;font-size:10px;line-height:26px;color:#000000;margin:0;text-align:left;margin-top: 5px;font-style: italic;">
+                                (As of week 26th Dec 2025 - 2nd Jan 2026)
+                        </p>
+                        <p class="body-font" style="font-family:'Poppins', Arial, sans-serif;font-size:10px;line-height:26px;color:#000000;margin:0 0 0 0;text-align:left;font-style: italic;">
+                                *Sources : Investing.com, Moneycontrol
+                        </p>
                     </td>
                 </tr>
 
@@ -289,6 +422,9 @@ Unlike gold, whose demand is driven largely by central banks and financial hedgi
                                 <strong>Inito:</strong> Femtech and diagnostics company raised <strong>$29 Mn</strong> in a <b>Series B</b> round led by Bertelsmann India Investments, signaling growing institutional interest in healthcare IP-led plays.
                             </li>
                         </ul>
+                        <p class="body-font" style="font-family:'Poppins', Arial, sans-serif;font-size:10px;line-height:26px;color:#000000;margin:0 0 20px 0;text-align:left;">
+                            *Sources : Inc42, YourStory, EnTrackr, MoneyControl
+                        </p>
                     </td>
                 </tr>
 
@@ -300,16 +436,19 @@ Unlike gold, whose demand is driven largely by central banks and financial hedgi
                             <strong style="color: #00193C;">Q&A with Neelesh Surana, CIO at Mirae Asset Investment Managers</strong>
                         </p>
                         
-                        <p class="body-font" style="font-family:'Poppins', Arial, sans-serif;font-size:14px;font-weight:600;color:#BA9851;margin:0 0 5px 0;text-align:left;"><span style="color: #BA9851;">Q: Is your view constructive on mid and small caps despite expensive valuations?</p></span>
+                        <p class="body-font" style="font-family:'Poppins', Arial, sans-serif;font-size:14px;font-weight:600;color:#BA9851;margin:0 0 5px 0;text-align:left;"><span style="color: #BA9851;">Q: Is your view constructive on mid and small caps despite expensive valuations?</span></p>
                         <p class="body-font" style="font-family:'Poppins', Arial, sans-serif;font-size:14px;line-height:26px;color:#000000;margin:0 0 20px 0;text-align:left;">
                             Yes, we remain constructive, but I don’t think this debate between large, mid, and small caps can be looked at in a very broad-brush manner. You really have to go company by company and sector by sector, and also look at where valuations were even a year or two ago. Market cap by itself shouldn’t be the deciding factor while building a portfolio, and for that reason I wouldn’t agree with the view that all mid and small caps are expensive.<br><br>
                             Also, it’s important to recognize how much the mid- and small-cap universe has changed over the last five years. The opportunity set has expanded meaningfully with a strong wave of IPOs and increasing formalization of the economy. We’ve seen close to 300 meaningful IPOs above a billion dollars in this period, which means several quality businesses and sector leaders now sit in the mid- and even small-cap space simply because of classification. That expansion gives investors enough room to find companies across sub-sectors that can deliver strong earnings growth and attractive long-term returns.
                         </p>
 
-                        <p class="body-font" style="font-family:'Poppins', Arial, sans-serif;font-size:14px;font-weight:600;color:#BA9851;margin:0 0 5px 0;text-align:left;"><span style="color: #BA9851;">Q: Is a quality-and-valuation approach at a disadvantage in momentum-driven markets?</p></span>
-                        <p class="body-font" style="font-family:'Poppins', Arial, sans-serif;font-size:14px;line-height:26px;color:#000000;margin:0 0 20px 0;text-align:left;">
+                        <p class="body-font" style="font-family:'Poppins', Arial, sans-serif;font-size:14px;font-weight:600;color:#BA9851;margin:0 0 5px 0;text-align:left;"><span style="color: #BA9851;">Q: Is a quality-and-valuation approach at a disadvantage in momentum-driven markets?</span></p>
+                        <p class="body-font" style="font-family:'Poppins', Arial, sans-serif;font-size:14px;line-height:26px;color:#000000;margin:0 0 5px 0;text-align:left;">
                             In the short term, markets can often be driven by narratives and momentum, but those don’t really sustain over longer periods. Over time, a quality-at-a-reasonable-price approach is what has consistently worked across cycles and over decades.<br><br>
                             If you are investing in high-quality businesses—those with strong longevity, sustainable growth, healthy returns on capital, and proven management—and you are careful not to overpay for that quality, the approach remains very effective. Ultimately, when valuations are sensible, returns tend to align with earnings growth over time, regardless of short-term market momentum.
+                        </p>
+                        <p class="body-font" style="font-family:'Poppins', Arial, sans-serif;font-size:10px;line-height:26px;color:#000000;margin:0 0 20px 0;text-align:left;">
+                            <a href="https://www.youtube.com/watch?v=SOhMcvcHsqA" target="_blank" style="font-style: italic;color: #00193C;text-decoration: none;">*Source : Neelesh Surana in conversation with Value Research</a>
                         </p>
                     </td>
                 </tr>
@@ -347,8 +486,8 @@ Unlike gold, whose demand is driven largely by central banks and financial hedgi
                         </table>
                         <p class="body-font" style="font-family:'Poppins', Arial, sans-serif;font-size:12px;line-height:26px;color:#000000;margin:0;text-align:left;text-decoration: underline;">
                             For an in-depth conversation with your wealth partner, please reach out to : <br>
-                        <p class="body-font" style="font-family:'Poppins', Arial, sans-serif;font-size:12px;line-height:26px;color:#000000;margin:0;text-align:left;">
-                            <b><a href="https://www.linkedin.com/in/sattish-lanka-825206114/" target="_blank" style="color:#000000;text-decoration:none;">Mr. Sattish Lanka</b></a> has over 17 years of experience in wealth and portfolio management, and leadership roles at DSP BlackRock, Axis Burgundy and IDFC Private Banking.
+                        </p><p class="body-font" style="font-family:'Poppins', Arial, sans-serif;font-size:12px;line-height:26px;color:#000000;margin:0;text-align:left;">
+                            <b><a href="https://www.linkedin.com/in/sattish-lanka-825206114/" target="_blank" style="color:#00193C;text-decoration:none;font-style: italic;">Mr. Sattish Lanka</a></b> has over 17 years of experience in wealth and portfolio management, and leadership roles at DSP BlackRock, Axis Burgundy and IDFC Private Banking.
                             <br>
                             He has been a trusted advisor to ultra-affluent families over the course of his journey, with over INR 1000 Crore worth of assets managed across market cycles.
                             <br>
@@ -379,7 +518,7 @@ Unlike gold, whose demand is driven largely by central banks and financial hedgi
                 </tr>
             </table>
         </td>
-        </tr>
+        
     </table>
 </body>
 </html>
