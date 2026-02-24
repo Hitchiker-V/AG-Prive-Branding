@@ -103,3 +103,109 @@ td > input {
     padding-bottom: 10px;
     border-bottom: 1px solid #eee;
 }
+
+/* Rich-text toolbar */
+.rich-text-wrapper {
+    margin-bottom: 10px;
+}
+
+.rich-text-toolbar {
+    display: flex;
+    gap: 4px;
+    padding: 4px 6px;
+    background-color: #f2f2f2;
+    border: 1px solid #ccc;
+    border-bottom: none;
+    border-radius: 4px 4px 0 0;
+}
+
+.rich-text-toolbar button {
+    background-color: #fff;
+    color: #333;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    padding: 3px 10px;
+    font-size: 13px;
+    cursor: pointer;
+    line-height: 1.4;
+    min-width: 30px;
+}
+
+.rich-text-toolbar button:hover {
+    background-color: #e0e0e0;
+}
+
+.rich-text-toolbar button.active {
+    background-color: #00193C;
+    color: #fff;
+    border-color: #00193C;
+}
+
+.rich-text-editor {
+    width: 100%;
+    min-height: 80px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 0 0 4px 4px;
+    box-sizing: border-box;
+    font-family: inherit;
+    font-size: 14px;
+    line-height: 1.6;
+    outline: none;
+    overflow-y: auto;
+    background-color: #fff;
+}
+
+.rich-text-editor:focus {
+    border-color: #00193C;
+    box-shadow: 0 0 0 2px rgba(0, 25, 60, 0.15);
+}
+
+/* Trend Arrow Picker */
+.trend-picker {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.trend-picker .arrow-btn {
+    padding: 2px 8px;
+    font-size: 14px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    background: #fff;
+    line-height: 1;
+}
+
+.trend-picker .arrow-btn.up {
+    color: #5cb85c;
+}
+
+.trend-picker .arrow-btn.down {
+    color: #d9534f;
+}
+
+.trend-picker .arrow-btn.selected {
+    border-color: currentColor;
+    font-weight: bold;
+}
+
+.trend-picker input {
+    width: 80px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    padding: 4px 6px;
+    font-size: 12px;
+}
+
+/* Commodity change color */
+.change-positive {
+    color: #5cb85c;
+    font-weight: 600;
+}
+
+.change-negative {
+    color: #d9534f;
+    font-weight: 600;
+}

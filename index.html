@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Newsletter Content Editor</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <h1>Newsletter Content Editor</h1>
 
@@ -30,7 +32,7 @@
             <legend>Introductory Section</legend>
             <label for="introHeading">Heading:</label>
             <input type="text" id="introHeading">
-            <label for="introContent">Content (use line breaks for paragraphs):</label>
+            <label for="introContent">Content:</label>
             <textarea id="introContent" rows="5"></textarea>
         </fieldset>
 
@@ -43,7 +45,7 @@
             <label for="chartInsight">Insight:</label>
             <textarea id="chartInsight" rows="5"></textarea>
         </fieldset>
-        
+
         <fieldset>
             <legend>Market Watch</legend>
             <div id="marketWatchTable"></div>
@@ -76,17 +78,17 @@
             <input type="text" id="themeHeading">
             <label for="themeContent">Content:</label>
             <textarea id="themeContent" rows="8"></textarea>
-             <label for="themeSources">Sources:</label>
+            <label for="themeSources">Sources:</label>
             <input type="text" id="themeSources">
         </fieldset>
 
         <fieldset>
             <legend>Deals Under Watch</legend>
             <div id="dealsWatchList"></div>
-             <label for="dealsWatchSources">Sources:</label>
+            <label for="dealsWatchSources">Sources:</label>
             <input type="text" id="dealsWatchSources">
         </fieldset>
-        
+
         <fieldset>
             <legend>Weekly Reading List</legend>
             <div id="readingList"></div>
@@ -103,4 +105,5 @@
 
     <script src="script.js"></script>
 </body>
+
 </html>
