@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Newsletter Content Editor</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>Newsletter Content Editor</h1>
+
+    <div class="container">
+        <h2>Upload Newsletter HTML</h2>
+        <p>Select the HTML file you want to edit.</p>
+        <input type="file" id="htmlFileInput" accept=".html">
+    </div>
+
+    <form id="newsletterForm" class="hidden">
+        <h2>Edit Content</h2>
+
+        <fieldset>
+            <legend>Newsletter Title and Date</legend>
+            <label for="newsletterTitle">Title:</label>
+            <input type="text" id="newsletterTitle">
+            <label for="newsletterDate">Date Range:</label>
+            <input type="text" id="newsletterDate">
+        </fieldset>
+
+        <fieldset>
+            <legend>Introductory Section</legend>
+            <label for="introHeading">Heading:</label>
+            <input type="text" id="introHeading">
+            <label for="introContent">Content:</label>
+            <textarea id="introContent" rows="5"></textarea>
+        </fieldset>
+
+        <fieldset>
+            <legend>Chart of the Week</legend>
+            <label for="chartHeading">Heading:</label>
+            <input type="text" id="chartHeading">
+            <label for="chartImageUrl">Image URL:</label>
+            <input type="url" id="chartImageUrl">
+            <label for="chartInsight">Insight:</label>
+            <textarea id="chartInsight" rows="5"></textarea>
+        </fieldset>
+
+        <fieldset>
+            <legend>Market Watch</legend>
+            <div id="marketWatchTable"></div>
+            <label for="marketWatchDate">Date:</label>
+            <input type="text" id="marketWatchDate">
+            <label for="marketWatchSources">Sources:</label>
+            <input type="text" id="marketWatchSources">
+        </fieldset>
+
+        <fieldset>
+            <legend>Broad Market View</legend>
+            <label for="marketViewHeading">Heading:</label>
+            <input type="text" id="marketViewHeading">
+            <label for="marketViewContent">Content:</label>
+            <textarea id="marketViewContent" rows="5"></textarea>
+        </fieldset>
+
+        <fieldset>
+            <legend>Commodity Corner</legend>
+            <div id="commodityCornerTable"></div>
+            <label for="commodityCornerDate">Date:</label>
+            <input type="text" id="commodityCornerDate">
+            <label for="commodityCornerSources">Sources:</label>
+            <input type="text" id="commodityCornerSources">
+        </fieldset>
+
+        <fieldset>
+            <legend>Theme of the Week</legend>
+            <label for="themeHeading">Heading:</label>
+            <input type="text" id="themeHeading">
+            <label for="themeContent">Content:</label>
+            <textarea id="themeContent" rows="8"></textarea>
+            <label for="themeSources">Sources:</label>
+            <input type="text" id="themeSources">
+        </fieldset>
+
+        <fieldset>
+            <legend>Deals Under Watch</legend>
+            <div id="dealsWatchList"></div>
+            <label for="dealsWatchSources">Sources:</label>
+            <input type="text" id="dealsWatchSources">
+        </fieldset>
+
+        <fieldset>
+            <legend>Expert's Opinion</legend>
+            <label for="expertHeading">Heading (e.g. Q&A with S Naren, CIO at ICICI):</label>
+            <input type="text" id="expertHeading">
+            <label for="expertQ1">Question 1:</label>
+            <textarea id="expertQ1" rows="3"></textarea>
+            <label for="expertA1">Answer 1:</label>
+            <textarea id="expertA1" rows="5"></textarea>
+            <label for="expertQ2">Question 2:</label>
+            <textarea id="expertQ2" rows="3"></textarea>
+            <label for="expertA2">Answer 2:</label>
+            <textarea id="expertA2" rows="5"></textarea>
+        </fieldset>
+
+        <fieldset>
+            <legend>Weekly Reading List</legend>
+            <div id="readingList"></div>
+        </fieldset>
+
+        <button type="button" id="generateBtn">Generate Newsletter</button>
+    </form>
+
+    <div id="outputContainer" class="hidden">
+        <h2>Generated HTML</h2>
+        <p>Copy the HTML from the text area below.</p>
+        <textarea id="outputHtml" rows="20" readonly></textarea>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

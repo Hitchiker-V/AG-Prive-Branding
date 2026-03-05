@@ -240,6 +240,34 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
+        // --- Expert's Opinion ---
+        const expertHeading = allH2s.find(h => h.innerText.includes("Expert's Opinion"));
+        if (expertHeading) {
+            const expertParent = expertHeading.parentElement;
+            const expertPs = expertParent.querySelectorAll('p.body-font');
+            // expertPs[0] = heading line (Q&A with...)
+            // expertPs[1] = Q1, expertPs[2] = A1
+            // expertPs[3] = Q2, expertPs[4] = A2
+            if (expertPs.length >= 1) {
+                const headingStrong = expertPs[0].querySelector('strong');
+                document.getElementById('expertHeading').value = headingStrong ? headingStrong.innerText : '';
+            }
+            if (expertPs.length >= 2) {
+                const q1Span = expertPs[1].querySelector('span');
+                document.getElementById('expertQ1').value = q1Span ? q1Span.innerText : '';
+            }
+            if (expertPs.length >= 3) {
+                document.getElementById('expertA1').value = expertPs[2].innerText;
+            }
+            if (expertPs.length >= 4) {
+                const q2Span = expertPs[3].querySelector('span');
+                document.getElementById('expertQ2').value = q2Span ? q2Span.innerText : '';
+            }
+            if (expertPs.length >= 5) {
+                document.getElementById('expertA2').value = expertPs[4].innerText;
+            }
+        }
+
         // --- Weekly Reading List ---
         const readingListHeading = allH2s.find(h => h.innerText.includes('Weekly Reading List'));
         if (readingListHeading) {
@@ -396,6 +424,92 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // =========================================================================
+    // HTML SANITIZER — strips Google Docs / paste artifacts
+    // =========================================================================
+    /**
+     * Cleans HTML from contenteditable rich-text editors before writing
+     * into the newsletter template. Removes Google Docs spans, unwanted
+     * inline styles (font-family, font-size, etc.) and converts <div>
+     * wrappers into <br> tags. Preserves <b>, <strong>, <i>, <em>, <br>.
+     */
+    function sanitizeRichTextHtml(html) {
+        // Create a temporary container to work with the DOM
+        const temp = document.createElement('div');
+        temp.innerHTML = html;
+
+        // 1. Convert <div> blocks to <br> + inline content (divs inside <p> break HTML)
+        temp.querySelectorAll('div').forEach(div => {
+            const br = document.createElement('br');
+            div.before(br);
+            while (div.firstChild) {
+                div.before(div.firstChild);
+            }
+            div.remove();
+        });
+
+        // 2. Remove <font> elements, keep their children
+        temp.querySelectorAll('font').forEach(font => {
+            while (font.firstChild) {
+                font.before(font.firstChild);
+            }
+            font.remove();
+        });
+
+        // 3. Strip unwanted inline styles from <span> elements
+        temp.querySelectorAll('span').forEach(span => {
+            if (span.style.length > 0) {
+                // Remove properties that override newsletter fonts
+                const propsToRemove = [];
+                for (let i = 0; i < span.style.length; i++) {
+                    const prop = span.style[i];
+                    if (prop.startsWith('font-family') ||
+                        prop.startsWith('font-size') ||
+                        prop.startsWith('font-variant') ||
+                        prop === 'white-space-collapse' ||
+                        prop === 'vertical-align' ||
+                        prop === 'background-color') {
+                        propsToRemove.push(prop);
+                    }
+                }
+                propsToRemove.forEach(p => span.style.removeProperty(p));
+
+                // If no styles remain, unwrap the span entirely
+                if (span.style.length === 0) {
+                    while (span.firstChild) {
+                        span.before(span.firstChild);
+                    }
+                    span.remove();
+                } else {
+                    // Also remove the id attribute (Google Docs IDs)
+                    span.removeAttribute('id');
+                }
+            } else {
+                // No styles — unwrap
+                while (span.firstChild) {
+                    span.before(span.firstChild);
+                }
+                span.remove();
+            }
+        });
+
+        // 4. Remove Google Docs internal guid spans by id
+        temp.querySelectorAll('[id^="docs-internal-guid"]').forEach(el => {
+            while (el.firstChild) {
+                el.before(el.firstChild);
+            }
+            el.remove();
+        });
+
+        // 5. Clean up multiple consecutive <br> tags (max 2)
+        let result = temp.innerHTML;
+        result = result.replace(/(<br\s*\/?>\s*){3,}/gi, '<br><br>');
+        // Remove leading <br>
+        result = result.replace(/^(\s*<br\s*\/?>\s*)+/, '');
+
+        return result;
+    }
+
+    // =========================================================================
     // 3. GENERATE BUTTON CLICK
     // =========================================================================
     generateBtn.addEventListener('click', () => {
@@ -407,9 +521,24 @@ document.addEventListener('DOMContentLoaded', () => {
         let newDoc = sourceDoc.cloneNode(true);
         updateDoc(newDoc);
 
-        const finalHtml = '<!DOCTYPE html>\n' + newDoc.documentElement.outerHTML;
+        let finalHtml = '<!DOCTYPE html>\n' + newDoc.documentElement.outerHTML;
+        // Fix DOMParser double-encoding of & inside href attributes (breaks Google Fonts URL)
+        finalHtml = finalHtml.replace(/href="([^"]*)"/g, (match, url) => {
+            return 'href="' + url.replace(/&amp;/g, '&') + '"';
+        });
         document.getElementById('outputHtml').value = finalHtml;
         outputContainer.classList.remove('hidden');
+
+        // Automatic Download
+        const blob = new Blob([finalHtml], { type: 'text/html' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'newsletter.html';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        setTimeout(() => URL.revokeObjectURL(url), 100);
     });
 
     // =========================================================================
@@ -428,7 +557,7 @@ document.addEventListener('DOMContentLoaded', () => {
             introHeadingEl.innerText = document.getElementById('introHeading').value;
             const introContentEl = introHeadingEl.nextElementSibling;
             if (introContentEl) {
-                introContentEl.innerHTML = document.getElementById('introContent').innerHTML;
+                introContentEl.innerHTML = sanitizeRichTextHtml(document.getElementById('introContent').innerHTML);
             }
         }
 
@@ -444,7 +573,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const insightDiv = chartTable.nextElementSibling;
                 if (insightDiv) {
                     const insightP = insightDiv.querySelector('p.body-font');
-                    if (insightP) insightP.innerHTML = document.getElementById('chartInsight').innerHTML;
+                    if (insightP) insightP.innerHTML = sanitizeRichTextHtml(document.getElementById('chartInsight').innerHTML);
                 }
             }
         }
@@ -459,6 +588,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 const uiRows = uiTable.querySelectorAll('tr');
                 const headerCells = uiRows[0] ? uiRows[0].querySelectorAll('th') : [];
                 const trendColIndex = [...headerCells].findIndex(c => c.innerText.trim().toLowerCase() === 'trend');
+                const oneWColIndex = [...headerCells].findIndex(c => c.innerText.trim().toLowerCase().includes('1w'));
+                const oneMColIndex = [...headerCells].findIndex(c => c.innerText.trim().toLowerCase().includes('1m'));
 
                 uiRows.forEach((uiRow, index) => {
                     if (index === 0) return; // Skip header
@@ -488,6 +619,16 @@ document.addEventListener('DOMContentLoaded', () => {
                             const input = uiCell.querySelector('input');
                             if (input) {
                                 originalCell.innerText = input.value;
+
+                                // Auto-color for percentage columns (1W% and 1M%)
+                                if (colIdx === oneWColIndex || colIdx === oneMColIndex) {
+                                    const val = input.value.trim();
+                                    const color = val.startsWith('-') ? '#d9534f' : '#5cb85c';
+                                    const currentStyle = originalCell.getAttribute('style') || '';
+                                    originalCell.setAttribute('style',
+                                        currentStyle.replace(/color:\s*#[a-fA-F0-9]{6}/, `color:${color}`)
+                                    );
+                                }
                             }
                         }
                     });
@@ -506,7 +647,7 @@ document.addEventListener('DOMContentLoaded', () => {
             broadMarketViewHeading.innerText = document.getElementById('marketViewHeading').value;
             const marketViewContentEl = broadMarketViewHeading.nextElementSibling;
             if (marketViewContentEl) {
-                marketViewContentEl.innerHTML = document.getElementById('marketViewContent').innerHTML;
+                marketViewContentEl.innerHTML = sanitizeRichTextHtml(document.getElementById('marketViewContent').innerHTML);
             }
         }
 
@@ -540,7 +681,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (themeHeading) {
             themeHeading.innerText = document.getElementById('themeHeading').value;
             const themeContent = themeHeading.nextElementSibling;
-            if (themeContent) themeContent.innerHTML = document.getElementById('themeContent').innerHTML;
+            if (themeContent) themeContent.innerHTML = sanitizeRichTextHtml(document.getElementById('themeContent').innerHTML);
             const themeSources = themeContent.nextElementSibling;
             if (themeSources) themeSources.innerText = document.getElementById('themeSources').value;
         }
@@ -551,9 +692,44 @@ document.addEventListener('DOMContentLoaded', () => {
             const dealsList = dealsHeading.nextElementSibling;
             if (dealsList) {
                 const uiEditors = document.querySelectorAll('#dealsWatchList .rich-text-editor');
-                dealsList.innerHTML = [...uiEditors].map(ed => `<li style="margin-bottom:10px;">${ed.innerHTML}</li>`).join('');
+                dealsList.innerHTML = [...uiEditors].map(ed => `<li style="margin-bottom:10px;">${sanitizeRichTextHtml(ed.innerHTML)}</li>`).join('');
                 const dealsSource = dealsList.nextElementSibling;
                 if (dealsSource) dealsSource.innerText = document.getElementById('dealsWatchSources').value;
+            }
+        }
+
+        // --- Update Expert's Opinion ---
+        const expertOpinionHeading = allH2s.find(h => h.innerText.includes("Expert's Opinion"));
+        if (expertOpinionHeading) {
+            const expertParent = expertOpinionHeading.parentElement;
+            const expertPs = expertParent.querySelectorAll('p.body-font');
+
+            // Update heading
+            if (expertPs.length >= 1) {
+                const headingStrong = expertPs[0].querySelector('strong');
+                if (headingStrong) headingStrong.innerText = document.getElementById('expertHeading').value;
+            }
+            // Update Q1
+            if (expertPs.length >= 2) {
+                const q1Span = expertPs[1].querySelector('span');
+                if (q1Span) q1Span.innerText = document.getElementById('expertQ1').value;
+            }
+            // Update A1
+            if (expertPs.length >= 3) {
+                expertPs[2].innerText = document.getElementById('expertA1').value;
+            }
+            // Update Q2
+            if (expertPs.length >= 4) {
+                const q2Span = expertPs[3].querySelector('span');
+                if (q2Span) q2Span.innerText = document.getElementById('expertQ2').value;
+            }
+            // Update A2
+            if (expertPs.length >= 5) {
+                expertPs[4].innerText = document.getElementById('expertA2').value;
+            }
+            // Remove extra Q&A pairs beyond Q2/A2 (template may have 3+ pairs)
+            for (let i = expertPs.length - 1; i >= 5; i--) {
+                expertPs[i].remove();
             }
         }
 
@@ -573,8 +749,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     originalLink.href = urlInput.value;
                     // Only add ➤ here — the UI title is clean (no icon)
                     originalLink.innerHTML = `➤ ${titleInput.value}`;
-                    const descSpan = originalLink.nextElementSibling;
-                    if (descSpan) descSpan.innerHTML = descEditor.innerHTML;
+                    const descSpan = originalLink.parentElement.querySelector('span');
+                    if (descSpan) descSpan.innerHTML = sanitizeRichTextHtml(descEditor.innerHTML);
                 }
             });
         }
