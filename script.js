@@ -217,15 +217,32 @@ document.addEventListener('DOMContentLoaded', () => {
         const themeHeading = allH2s.find(h => h.innerText.includes('Theme of the Week'));
         if (themeHeading) {
             document.getElementById('themeHeading').value = themeHeading.innerText;
-            const themeContent = themeHeading.nextElementSibling;
-            if (themeContent) {
+
+            // Check if there is a theme image (table with img) right after the heading
+            let nextEl = themeHeading.nextElementSibling;
+            const themeImageField = document.getElementById('themeImageUrl');
+
+            // If the next element is a table containing an img, it's the theme image
+            if (nextEl && nextEl.tagName === 'TABLE' && nextEl.querySelector('img.img-responsive')) {
+                const themeImg = nextEl.querySelector('img.img-responsive');
+                if (themeImageField && themeImg) {
+                    themeImageField.value = themeImg.src;
+                }
+                // Move past the image table to find the content paragraph
+                nextEl = nextEl.nextElementSibling;
+            } else if (themeImageField) {
+                themeImageField.value = '';
+            }
+
+            // nextEl should now be the theme content <p>
+            if (nextEl) {
                 // Replace textarea with rich-text editor
                 const container = document.getElementById('themeContent').parentElement;
                 const oldTextarea = document.getElementById('themeContent');
-                const richEditor = createRichTextEditor(themeContent.innerHTML.trim(), 'themeContent', 160);
+                const richEditor = createRichTextEditor(nextEl.innerHTML.trim(), 'themeContent', 160);
                 container.replaceChild(richEditor, oldTextarea);
             }
-            const themeSources = themeHeading.nextElementSibling?.nextElementSibling;
+            const themeSources = nextEl?.nextElementSibling;
             if (themeSources) document.getElementById('themeSources').value = themeSources.innerText;
         }
 
@@ -680,9 +697,62 @@ document.addEventListener('DOMContentLoaded', () => {
         const themeHeading = allH2s.find(h => h.innerText.includes('Theme of the Week'));
         if (themeHeading) {
             themeHeading.innerText = document.getElementById('themeHeading').value;
-            const themeContent = themeHeading.nextElementSibling;
+
+            const themeImageUrl = document.getElementById('themeImageUrl')
+                ? document.getElementById('themeImageUrl').value.trim()
+                : '';
+
+            // Determine what comes after the heading
+            let nextEl = themeHeading.nextElementSibling;
+            let existingImageTable = null;
+
+            // Check if there is already an image table after the heading
+            if (nextEl && nextEl.tagName === 'TABLE' && nextEl.querySelector('img.img-responsive')) {
+                existingImageTable = nextEl;
+                nextEl = nextEl.nextElementSibling; // the content <p>
+            }
+
+            if (themeImageUrl) {
+                if (existingImageTable) {
+                    // Update existing image src
+                    const img = existingImageTable.querySelector('img.img-responsive');
+                    if (img) img.src = themeImageUrl;
+                } else {
+                    // Create and insert a new image table (same structure as Chart of the Week)
+                    const imgTable = doc.createElement('table');
+                    imgTable.setAttribute('role', 'presentation');
+                    imgTable.setAttribute('width', '100%');
+                    imgTable.setAttribute('border', '0');
+                    imgTable.setAttribute('cellspacing', '0');
+                    imgTable.setAttribute('cellpadding', '0');
+                    const tbody = doc.createElement('tbody');
+                    const tr = doc.createElement('tr');
+                    const td = doc.createElement('td');
+                    td.setAttribute('align', 'center');
+                    const img = doc.createElement('img');
+                    img.src = themeImageUrl;
+                    img.alt = 'Theme of the Week';
+                    img.setAttribute('width', '540');
+                    img.className = 'img-responsive';
+                    img.setAttribute('style', 'width:540px;height:auto;display:block;border:1px solid #eeeeee;margin-bottom:15px;');
+                    td.appendChild(img);
+                    tr.appendChild(td);
+                    tbody.appendChild(tr);
+                    imgTable.appendChild(tbody);
+                    // Insert the image table right after the heading, before the content
+                    themeHeading.after(imgTable);
+                }
+            } else if (existingImageTable) {
+                // No image URL provided — remove the existing image table
+                existingImageTable.remove();
+            }
+
+            // Update the theme content paragraph (nextEl is already pointing to it)
+            const themeContent = themeImageUrl
+                ? (existingImageTable ? nextEl : themeHeading.nextElementSibling?.nextElementSibling)
+                : themeHeading.nextElementSibling;
             if (themeContent) themeContent.innerHTML = sanitizeRichTextHtml(document.getElementById('themeContent').innerHTML);
-            const themeSources = themeContent.nextElementSibling;
+            const themeSources = themeContent?.nextElementSibling;
             if (themeSources) themeSources.innerText = document.getElementById('themeSources').value;
         }
 
